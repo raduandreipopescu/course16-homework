@@ -69,11 +69,12 @@ public class PersonService {
         }
     }
 
-    public Set<String> listUniqueFirstNames() {
+    public List<String> listUniqueFirstNames() {
         return persons.stream()
                 .map(Person::getFirstName)
                 .filter(Objects::nonNull)
-                .collect(Collectors.toSet());
+                .distinct()
+                .toList();
     }
 
     public List<Person> sortPersonsByFirstName() {
